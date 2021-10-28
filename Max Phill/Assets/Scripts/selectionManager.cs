@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class selectionManager : MonoBehaviour
 {
@@ -52,6 +53,11 @@ public class selectionManager : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             selected = false;
             selection = null;
+        }
+
+        if(Input.GetMouseButtonDown(1)){
+            Debug.Log("Changing!!");
+            SceneManager.LoadScene("LevelExplorer");
         }
     }
 }
