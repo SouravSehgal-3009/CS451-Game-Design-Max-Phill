@@ -1683,6 +1683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b39d006316856d4c8840c6ad991db5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scissors: 0
+  cover: 0
+  coins: 0
 --- !u!1 &1050984395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2078,7 @@ GameObject:
   - component: {fileID: 1781381380}
   - component: {fileID: 1781381379}
   - component: {fileID: 1781381378}
+  - component: {fileID: 1781381381}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2147,6 +2151,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1781381381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781381377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b39d006316856d4c8840c6ad991db5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scissors: 2
+  cover: 1
+  coins: 1000
 --- !u!1 &1822657604
 GameObject:
   m_ObjectHideFlags: 0
