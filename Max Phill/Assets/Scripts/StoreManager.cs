@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class StoreManager : MonoBehaviour
 {
@@ -52,4 +54,12 @@ public class StoreManager : MonoBehaviour
         TextMeshProUGUI scitext = ScissorsText.GetComponent<TextMeshProUGUI>();
         scitext.text = "Scissors: " + PlayerPrefs.GetInt("scissors");
     }
+
+    void Update(){
+        if(Input.GetMouseButtonDown(1)){
+            Debug.Log("Changing!!");
+            SceneManager.LoadScene("LevelExplorer");
+        }
+    }
+
 }
