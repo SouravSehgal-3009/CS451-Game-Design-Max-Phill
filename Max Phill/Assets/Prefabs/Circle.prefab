@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 917959847037751505}
   - component: {fileID: 3196010642285294869}
   - component: {fileID: 61441564075910310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Shape
   m_Icon: {fileID: 0}

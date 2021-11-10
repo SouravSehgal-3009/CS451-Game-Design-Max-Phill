@@ -10,6 +10,7 @@ public class TextManager : MonoBehaviour
     public GameObject CoinText;
     public GameObject ScissorsText;
     public GameObject CoversText;
+    public GameObject PointsText;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,16 @@ public class TextManager : MonoBehaviour
     void FixedUpdate()
     {
         TextMeshProUGUI ct = CoinText.GetComponent<TextMeshProUGUI>();
-        ct.text = "Coins: " + PlayerPrefs.GetInt("coins");
+        ct.text = "" + PlayerPrefs.GetInt("coins");
 
         TextMeshProUGUI covertext = CoversText.GetComponent<TextMeshProUGUI>();
-        covertext.text = "Covers: " + PlayerPrefs.GetInt("cover");
+        covertext.text = "" + PlayerPrefs.GetInt("cover");
 
         TextMeshProUGUI scitext = ScissorsText.GetComponent<TextMeshProUGUI>();
-        scitext.text = "Scissors: " + PlayerPrefs.GetInt("scissors");
+        scitext.text = "" + PlayerPrefs.GetInt("scissors");
+
+        TextMeshProUGUI pointstext = PointsText.GetComponent<TextMeshProUGUI>();
+        pointstext.text = "Points:" + PlayerPrefs.GetInt("points");
     }
 
     void Update(){

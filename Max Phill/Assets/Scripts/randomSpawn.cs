@@ -32,6 +32,11 @@ public class randomSpawn : MonoBehaviour
 
         randomInt = Random.Range(0, prefabs.Length);
         Instantiate(prefabs[randomInt], mousePos, Quaternion.identity);
+
+        int points = PlayerPrefs.GetInt("points");
+        points = points + PlayerPrefs.GetInt(prefabs[randomInt].name);
+
+        PlayerPrefs.SetInt("points", points);
         left = left - 1; 
     }
 }
