@@ -6,6 +6,8 @@ public class randomSpawn : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public GameOver gameOver;
+
     [SerializeField]
     private GameObject[] prefabs;
     public int left;
@@ -16,6 +18,7 @@ public class randomSpawn : MonoBehaviour
 
     void Start(){
         hold = false;
+        PlayerPrefs.SetInt("left", left);
     }
     // Update is called once per frame
     void Update()
@@ -23,6 +26,7 @@ public class randomSpawn : MonoBehaviour
         if(Input.GetAxis("Horizontal") > 0 && hold == false){
             hold = true;
             if(left > 0) spawn();
+            else gameOver.Setup(PlayerPrefs.GetInt("points"));
         }
         else if(Input.GetAxis("Horizontal") == 0) hold = false;
     }
@@ -35,8 +39,9 @@ public class randomSpawn : MonoBehaviour
 
         int points = PlayerPrefs.GetInt("points");
         points = points + PlayerPrefs.GetInt(prefabs[randomInt].name);
-
         PlayerPrefs.SetInt("points", points);
+        
         left = left - 1; 
+        PlayerPrefs.SetInt("left", left);
     }
 }

@@ -16,12 +16,21 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("coins", coins);
         PlayerPrefs.SetInt("cover", cover);
         PlayerPrefs.SetInt("scissors", scissors);
+
+        PlayerPrefs.SetInt("maxlevel", 1);
+
         PlayerPrefs.SetInt("currlevel", 1);
         PlayerPrefs.SetInt("points", 0);
+        PlayerPrefs.SetInt("left", 0);
 
-        PlayerPrefs.SetInt("Square", 36);
-        PlayerPrefs.SetInt("Triangle", 18);
-        PlayerPrefs.SetInt("Circle", 27);
+        PlayerPrefs.SetInt("Square", 20);
+        PlayerPrefs.SetInt("Triangle", 24);
+        PlayerPrefs.SetInt("Circle", 18);
+        PlayerPrefs.SetInt("Hexagon", 40);
+        PlayerPrefs.SetInt("Star", 30);
+        PlayerPrefs.SetInt("Ellipse", 35);
+        PlayerPrefs.SetInt("Pentagon", 45);
+
     }
 
     public void PlayGame()

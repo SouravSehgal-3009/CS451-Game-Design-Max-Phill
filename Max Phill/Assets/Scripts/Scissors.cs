@@ -35,6 +35,11 @@ public class Scissors : MonoBehaviour
                     Debug.Log(hitinfo.collider.name);
                     Debug.Log("Cutted");
 
+                    string Name = hitinfo.collider.name.Replace("(Clone)", "");
+                    int points = PlayerPrefs.GetInt("points");
+                    points = points - PlayerPrefs.GetInt(Name);
+                    PlayerPrefs.SetInt("points", points);
+                    
                     Destroy(hitinfo.transform.gameObject);
                     change();
                 }
