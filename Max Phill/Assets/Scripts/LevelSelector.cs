@@ -9,9 +9,10 @@ public class LevelSelector : MonoBehaviour
     // Start is called before the first frame update
     public void Level1()
     {
-        int currlevel = PlayerPrefs.GetInt("currlevel");
-        Debug.Log(currlevel);
-        if(currlevel >= 1){
+        int maxlevel = PlayerPrefs.GetInt("maxlevel");
+        Debug.Log(maxlevel);
+        if(maxlevel >= 1){
+            PlayerPrefs.SetInt("points", 0);
             SceneManager.LoadScene("Level1");
             Debug.Log("Loaded");
         }
@@ -19,16 +20,16 @@ public class LevelSelector : MonoBehaviour
 
     public void Level2()
     {
-        int currlevel = PlayerPrefs.GetInt("currlevel");
-        if(currlevel >= 2){
+        int maxlevel = PlayerPrefs.GetInt("maxlevel");
+        if(maxlevel >= 2){
             SceneManager.LoadScene("Level2");
         }
     }
 
     public void Level3()
     {
-        int currlevel = PlayerPrefs.GetInt("currlevel");
-        if(currlevel >= 3){
+        int maxlevel = PlayerPrefs.GetInt("maxlevel");
+        if(maxlevel >= 3){
             SceneManager.LoadScene("Level3");
         }
     }

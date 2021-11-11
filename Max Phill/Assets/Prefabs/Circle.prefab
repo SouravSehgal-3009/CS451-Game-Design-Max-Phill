@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 917959847037751505}
   - component: {fileID: 3196010642285294869}
-  - component: {fileID: 61441564075910310}
+  - component: {fileID: 1972164655360395240}
   m_Layer: 6
   m_Name: Circle
   m_TagString: Shape
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &61441564075910310
-BoxCollider2D:
+--- !u!58 &1972164655360395240
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,16 +96,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.11, y: 2.08}
-    newSize: {x: 2.11, y: 2.08}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.009240985, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.11, y: 2.08}
-  m_EdgeRadius: 0
+  m_Radius: 1.5095993

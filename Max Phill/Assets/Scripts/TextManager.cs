@@ -11,6 +11,7 @@ public class TextManager : MonoBehaviour
     public GameObject ScissorsText;
     public GameObject CoversText;
     public GameObject PointsText;
+    public GameObject LeftsText;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,10 @@ public class TextManager : MonoBehaviour
         scitext.text = "" + PlayerPrefs.GetInt("scissors");
 
         TextMeshProUGUI pointstext = PointsText.GetComponent<TextMeshProUGUI>();
-        pointstext.text = "Points:" + PlayerPrefs.GetInt("points");
+        pointstext.text = "Points: " + PlayerPrefs.GetInt("points");
+
+        TextMeshProUGUI leftstext = LeftsText.GetComponent<TextMeshProUGUI>();
+        leftstext.text = "Left: " + PlayerPrefs.GetInt("left");
     }
 
     void Update(){
