@@ -6,6 +6,7 @@ public class Scissors : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public OverlapManager om;
     private string tag = "Shape";
     private bool selected = false;
 
@@ -40,7 +41,20 @@ public class Scissors : MonoBehaviour
                     points = points - PlayerPrefs.GetInt(Name);
                     PlayerPrefs.SetInt("points", points);
                     
+                    Vector2 pos = hitinfo.transform.position;
+                
+                    int x = (int)((pos.x + om.sw/2)*om.N/om.sw);
+                    int y = (int)((pos.y + om.sh/2)*om.N/om.sh);
+
+                    om.decrement(x, y);
+
+                    float penalty = om.getPenalty(x, y, Name);
+                    PlayerPrefs.SetFloat("penalty", PlayerPrefs.GetFloat("penalty") - penalty);
+
+                    PlayerPrefs.SetInt("points", (int)(PlayerPrefs.GetInt("points") + penalty));
+
                     Destroy(hitinfo.transform.gameObject);
+        
                     change();
                 }
             }

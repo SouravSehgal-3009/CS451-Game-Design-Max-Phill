@@ -6,6 +6,7 @@ public class randomSpawn : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public OverlapManager om;
     public GameOver gameOver;
 
     [SerializeField]
@@ -19,14 +20,23 @@ public class randomSpawn : MonoBehaviour
     void Start(){
         hold = false;
         PlayerPrefs.SetInt("left", left);
+
+        Debug.Log("ScreenWidth and ScreenHeight");
+        Debug.Log(om.sw + ", " + om.sh);
     }
     // Update is called once per frame
     void Update()
     {
         if(Input.GetAxis("Horizontal") > 0 && hold == false){
             hold = true;
-            if(left > 0) spawn();
-            else gameOver.Setup(PlayerPrefs.GetInt("points"));
+            if(left > 0){
+                spawn();
+                // om.increment();
+            }
+            else { 
+                om.display();
+                gameOver.Setup(PlayerPrefs.GetInt("points"));
+            }
         }
         else if(Input.GetAxis("Horizontal") == 0) hold = false;
     }
@@ -41,6 +51,22 @@ public class randomSpawn : MonoBehaviour
         points = points + PlayerPrefs.GetInt(prefabs[randomInt].name);
         PlayerPrefs.SetInt("points", points);
         
+        Debug.Log(mousePos.x + ", " + mousePos.y);
+        
+        int x = (int)((mousePos.x + om.sw/2)*om.N/om.sw);
+        int y = (int)((mousePos.y + om.sh/2)*om.N/om.sh);
+
+        int overlaps = om.getValue(x, y);
+        float penalty = om.getPenalty(x, y, prefabs[randomInt].name);
+
+        points = (int)(PlayerPrefs.GetInt("points") - penalty);
+        PlayerPrefs.SetInt("points", points);
+        PlayerPrefs.SetFloat("penalty", penalty + PlayerPrefs.GetFloat("penalty"));
+
+        om.increment(x, y);
+
+        Debug.Log(x + ", " + y);
+
         left = left - 1; 
         PlayerPrefs.SetInt("left", left);
     }
