@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("maxlevel", 1);
 
         PlayerPrefs.SetInt("currlevel", 1);
+        PlayerPrefs.SetFloat("penalty", 0.0f);
         PlayerPrefs.SetInt("points", 0);
         PlayerPrefs.SetInt("left", 0);
 
@@ -30,7 +31,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("Star", 30);
         PlayerPrefs.SetInt("Ellipse", 35);
         PlayerPrefs.SetInt("Pentagon", 45);
-
+        PlayerPrefs.SetInt("coverarea", 50);
     }
 
     public void PlayGame()

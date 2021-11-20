@@ -13,6 +13,7 @@ public class PowerManager : MonoBehaviour
     RectTransform rf;
     float height, width;
 
+    public OverlapManager om;
 
     void Start(){
         
@@ -37,15 +38,23 @@ public class PowerManager : MonoBehaviour
             float spawnX = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x + width, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x - width);
             Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0);
 
-            float x = Random.Range(0, 175); 
+            int x = (int)((spawnX + om.sw/2)*om.N/om.sw);
+            int y = (int)((spawnY + om.sh/2)*om.N/om.sh);
+
+            float penalty = om.getPenalty(x, y, "coverarea");
+
+            om.increment(x, y);
+
+            float theta = Random.Range(0, 175); 
             
             new_object.transform.position = spawnPosition;
-            new_object.transform.eulerAngles = new Vector3(0, 0, x);
+            new_object.transform.eulerAngles = new Vector3(0, 0, theta);
 
             int points = PlayerPrefs.GetInt("points");
-            points = points + 50;
+            points = (int)(points + 50 - penalty);
 
             PlayerPrefs.SetInt("points", points);
+            PlayerPrefs.SetFloat("penalty", penalty + PlayerPrefs.GetFloat("penalty"));
         }
     }
 

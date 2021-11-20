@@ -12,6 +12,7 @@ public class TextManager : MonoBehaviour
     public GameObject CoversText;
     public GameObject PointsText;
     public GameObject LeftsText;
+    public GameObject PenaltyText;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,9 @@ public class TextManager : MonoBehaviour
 
         TextMeshProUGUI leftstext = LeftsText.GetComponent<TextMeshProUGUI>();
         leftstext.text = "Left: " + PlayerPrefs.GetInt("left");
+
+        TextMeshProUGUI penaltytext = PenaltyText.GetComponent<TextMeshProUGUI>();
+        penaltytext.text = "Penalty: " + PlayerPrefs.GetFloat("penalty");
     }
 
     void Update(){
