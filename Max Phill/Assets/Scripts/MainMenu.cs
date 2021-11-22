@@ -10,12 +10,14 @@ public class MainMenu : MonoBehaviour
     public int scissors;
     public int cover;
     public int coins;
+    public int crop;
 
     void Start(){
         Debug.Log(coins);
         PlayerPrefs.SetInt("coins", coins);
         PlayerPrefs.SetInt("cover", cover);
         PlayerPrefs.SetInt("scissors", scissors);
+        PlayerPrefs.SetInt("crop", crop);
 
         PlayerPrefs.SetInt("maxlevel", 1);
 

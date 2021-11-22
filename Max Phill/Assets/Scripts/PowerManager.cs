@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+
 
 public class PowerManager : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class PowerManager : MonoBehaviour
     float height, width;
 
     public OverlapManager om;
+    public GameObject pausePanel;
+    public GameObject gameScreen;
+    public GameObject parent;
 
     void Start(){
         
@@ -49,6 +54,8 @@ public class PowerManager : MonoBehaviour
             
             new_object.transform.position = spawnPosition;
             new_object.transform.eulerAngles = new Vector3(0, 0, theta);
+            new_object.transform.SetParent(parent.GetComponent<Transform>());
+            // new_object.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
             int points = PlayerPrefs.GetInt("points");
             points = (int)(points + 50 - penalty);
@@ -70,5 +77,33 @@ public class PowerManager : MonoBehaviour
             Scissors.GetComponent<Scissors>().enabled = true;
         }
 
+    }
+
+    public void Crop(){
+
+        int crops = PlayerPrefs.GetInt("crop");
+
+        if(crops > 0){
+            GameObject selectionManager = GameObject.Find("SelectionManager");
+            selectionManager.GetComponent<selectionManager>().enabled = false;
+
+            GameObject CropObj = GameObject.Find("CropManager");
+            CropObj.GetComponent<Cropping>().enabled = true;
+        }
+
+    }
+
+    public void Pause(){
+        pausePanel.SetActive(true);
+        gameScreen.SetActive(false);
+    }
+
+    public void Resume(){
+        pausePanel.SetActive(false);
+        gameScreen.SetActive(true);
+    }
+
+    public void Home(){
+        SceneManager.LoadScene("Menu");
     }
 }

@@ -13,6 +13,10 @@ public class TextManager : MonoBehaviour
     public GameObject PointsText;
     public GameObject LeftsText;
     public GameObject PenaltyText;
+    public GameObject CropText;
+
+    public GameObject pausePanel;
+    public GameObject gameScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +43,15 @@ public class TextManager : MonoBehaviour
 
         TextMeshProUGUI penaltytext = PenaltyText.GetComponent<TextMeshProUGUI>();
         penaltytext.text = "Penalty: " + PlayerPrefs.GetFloat("penalty");
+
+        TextMeshProUGUI croptext = CropText.GetComponent<TextMeshProUGUI>();
+        croptext.text = "" + PlayerPrefs.GetInt("crop");
     }
 
     void Update(){
         if(Input.GetMouseButtonDown(1)){
-            Debug.Log("Changing!!");
-            SceneManager.LoadScene("LevelExplorer");
+            pausePanel.SetActive(true);
+            gameScreen.SetActive(false);
         }
     }
 

@@ -6,8 +6,9 @@ using System.Text;
 public class OverlapManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int N = 20;
-    public int[,] count = new int[20, 20];
+    public int N;
+
+    public int[,] count;
 
     public float sh;
     public float sw;
@@ -18,11 +19,16 @@ public class OverlapManager : MonoBehaviour
     }
     void Start()
     {
+        count = new int[N, N];
+        sh = 2*Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y;
+        sw = 2*Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x;
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 count[i, j] = 0;
             }
         }
+
+        Debug.Log(sw + ", " + sh);
     }
 
     public void increment(int x, int y){
@@ -67,10 +73,19 @@ public class OverlapManager : MonoBehaviour
         return overlaps;
     }
 
-    public float getPenalty(int x, int y, string name){
+    public float getPenalty(int x, int y, string Name){
+        
+        int i = 1;
+        if(Name.EndsWith("H1") || Name.EndsWith("H2")){
+            i = 2;
+        }
+
+        Name = Name.Replace("H1", "");
+        Name = Name.Replace("H2", "");
+
         int overlaps = getValue(x, y);
-        float penalty = Mathf.Min(overlaps * PlayerPrefs.GetInt(name)/8 + PlayerPrefs.GetFloat("penalty"),
-                                 PlayerPrefs.GetInt(name) + 10);
+        float penalty = Mathf.Min(overlaps * PlayerPrefs.GetInt(Name)/8,
+                                 PlayerPrefs.GetInt(Name)/i + 10/i);
 
         return penalty;
     }

@@ -20,11 +20,11 @@ public class Scissors : MonoBehaviour
     {
         if(Input.GetAxis("Horizontal") < 0 && selected == false){
 
-            Debug.Log("Clicked!!");
+            // Debug.Log("Clicked!!");
             RaycastHit2D hitinfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
             if(hitinfo.collider != null){
-                Debug.Log("Hit");
+                // Debug.Log("Hit");
                 if(hitinfo.transform.CompareTag(tag) || hitinfo.transform.CompareTag("Cover")){
 
                     int scissor = PlayerPrefs.GetInt("scissors");
@@ -32,13 +32,20 @@ public class Scissors : MonoBehaviour
                     PlayerPrefs.SetInt("scissors", scissor);
 
                     selected = true;
-                    Debug.Log("Name of the Selected Object");
-                    Debug.Log(hitinfo.collider.name);
-                    Debug.Log("Cutted");
-
+                    // Debug.Log("Name of the Selected Object");
+                    // Debug.Log(hitinfo.collider.name);
+                    // Debug.Log("Cutted");
+                    
+                    int i = 1;
                     string Name = hitinfo.collider.name.Replace("(Clone)", "");
+                    if(Name.EndsWith("H1") || Name.EndsWith("H2")){
+                        i = 2;
+                    }
+                    Name = Name.Replace("H1", "");
+                    Name = Name.Replace("H2", "");
+
                     int points = PlayerPrefs.GetInt("points");
-                    points = points - PlayerPrefs.GetInt(Name);
+                    points = points - (int)PlayerPrefs.GetInt(Name)/i;
                     PlayerPrefs.SetInt("points", points);
                     
                     Vector2 pos = hitinfo.transform.position;
@@ -49,6 +56,9 @@ public class Scissors : MonoBehaviour
                     om.decrement(x, y);
 
                     float penalty = om.getPenalty(x, y, Name);
+                    if(penalty > PlayerPrefs.GetFloat("penalty")){
+                        penalty = PlayerPrefs.GetFloat("penalty");
+                    }
                     PlayerPrefs.SetFloat("penalty", PlayerPrefs.GetFloat("penalty") - penalty);
 
                     PlayerPrefs.SetInt("points", (int)(PlayerPrefs.GetInt("points") + penalty));
