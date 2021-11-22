@@ -169,6 +169,7 @@ MonoBehaviour:
   CoinText: {fileID: 1041722382}
   ScissorsText: {fileID: 386335274}
   CoversText: {fileID: 1379002069}
+  CropText: {fileID: 0}
 --- !u!1 &183283424
 GameObject:
   m_ObjectHideFlags: 0

@@ -172,8 +172,10 @@ MonoBehaviour:
   prefabs:
   - {fileID: 9014856921321399195, guid: dc5763c65ae734543a31d3fb51634e8c, type: 3}
   - {fileID: 9105930683837896793, guid: 6333c3e7bcaff2c4ab104ba793d85cf4, type: 3}
-  - {fileID: 697190637155176357, guid: 0968e6ef4238449478e158b90afa387f, type: 3}
+  - {fileID: 7855117403181062287, guid: 24c8d5fdb224fea468ebbe8c1c3508c1, type: 3}
   - {fileID: 1851374466177464697, guid: 65a6bc913e20bb349838793464a58588, type: 3}
+  - {fileID: 697190637155176357, guid: 0968e6ef4238449478e158b90afa387f, type: 3}
+  - {fileID: 8676301586528568031, guid: f8e40deffb855ea43b9bb1c8f78b2295, type: 3}
   left: 12
 --- !u!1 &41771938
 GameObject:
@@ -3065,7 +3067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsTxt: {fileID: 1767173119}
-  threshold: 400
+  threshold: 700
   nextButton: {fileID: 892510368}
 --- !u!224 &1872307303
 RectTransform:

@@ -14,15 +14,14 @@ public class GameOver : MonoBehaviour
     public void Setup(int Points){
         gameObject.SetActive(true);
         pointsTxt.text = "Points: " + Points.ToString();
-
         if(Points >= threshold){
             int maxlevel = PlayerPrefs.GetInt("maxlevel");
             int currlevel = PlayerPrefs.GetInt("currlevel");
             maxlevel = Mathf.Max(maxlevel, currlevel + 1);
-
             PlayerPrefs.SetInt("maxlevel", maxlevel);
             nextButton.SetActive(true);
         }
+    
     }
 
     public void LevelExplorer(){
@@ -37,8 +36,9 @@ public class GameOver : MonoBehaviour
         int current = PlayerPrefs.GetInt("currlevel");
 
         PlayerPrefs.SetInt("points", 0);
-        PlayerPrefs.SetInt("currLevel", current + 1);
+        PlayerPrefs.SetInt("penalty", 0);
 
+        PlayerPrefs.SetInt("currlevel", current + 1);
         SceneManager.LoadScene("Level"+(current+1));
     }
 }

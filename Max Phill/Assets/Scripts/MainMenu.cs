@@ -27,13 +27,13 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("left", 0);
 
         PlayerPrefs.SetInt("Square", 20);
-        PlayerPrefs.SetInt("Triangle", 24);
+        PlayerPrefs.SetInt("Triangle", 30);
         PlayerPrefs.SetInt("Circle", 18);
-        PlayerPrefs.SetInt("Hexagon", 40);
-        PlayerPrefs.SetInt("Star", 30);
-        PlayerPrefs.SetInt("Ellipse", 35);
-        PlayerPrefs.SetInt("Pentagon", 45);
-        PlayerPrefs.SetInt("coverarea", 50);
+        PlayerPrefs.SetInt("Hexagon", 80);
+        PlayerPrefs.SetInt("Star", 100);
+        PlayerPrefs.SetInt("Ellipse", 60);
+        PlayerPrefs.SetInt("Pentagon", 40);
+        PlayerPrefs.SetInt("coverarea", 60);
     }
 
     public void PlayGame()
