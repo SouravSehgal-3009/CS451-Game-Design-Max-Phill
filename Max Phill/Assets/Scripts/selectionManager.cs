@@ -9,7 +9,7 @@ public class selectionManager : MonoBehaviour
     private bool selected;
     private Transform selection;
     private Vector2 position;
-    private string name;
+    private string Name;
     private string tag = "Shape";
     private Vector3 rotation = new Vector3(0, 0, 1);
 
@@ -39,18 +39,18 @@ public class selectionManager : MonoBehaviour
     {
         if(Input.GetAxis("Horizontal") < 0 && selection == null){
 
-            Debug.Log("Clicked!!");
+            // Debug.Log("Clicked!!");
             RaycastHit2D hitinfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
             if(hitinfo.collider != null){
-                Debug.Log("Hit");
+                // Debug.Log("Hit");
                 if(hitinfo.transform.CompareTag(tag)){
                     selected = true;
                     selection = hitinfo.transform;
                     position = hitinfo.transform.position;
-                    name = hitinfo.collider.name.Replace("(Clone)", "");
+                    Name = hitinfo.collider.name.Replace("(Clone)", "");
 
-                    Debug.Log("Name of the Selected Object");
+                    // Debug.Log("Name of the Selected Object");
                     Debug.Log(hitinfo.collider.name);
                 }
             }
@@ -63,12 +63,12 @@ public class selectionManager : MonoBehaviour
             int y = (int)((position.y + om.sh/2)*om.N/om.sh);
             om.decrement(x, y);  
 
-            float penalty = om.getPenalty(x, y, name); 
+            float penalty = om.getPenalty(x, y, Name); 
 
             x = (int)((selection.position.x + om.sw/2)*om.N/om.sw);
             y = (int)((selection.position.y + om.sh/2)*om.N/om.sh);
         
-            float penalty_new = om.getPenalty(x, y, name);
+            float penalty_new = om.getPenalty(x, y, Name);
 
             PlayerPrefs.SetFloat("penalty", PlayerPrefs.GetFloat("penalty") + penalty_new - penalty);
             PlayerPrefs.SetInt("points", (int)(PlayerPrefs.GetInt("points") + penalty - penalty_new));
@@ -76,11 +76,6 @@ public class selectionManager : MonoBehaviour
             om.increment(x, y);
 
             selection = null;
-        }
-
-        if(Input.GetMouseButtonDown(1)){
-            Debug.Log("Changing!!");
-            SceneManager.LoadScene("LevelExplorer");
         }
     }
 }

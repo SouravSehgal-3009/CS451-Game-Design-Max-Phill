@@ -13,6 +13,7 @@ public class StoreManager : MonoBehaviour
     public GameObject CoinText;
     public GameObject ScissorsText;
     public GameObject CoversText;
+    public GameObject CropText;
 
     public void BuyScissors(){
 
@@ -36,6 +37,21 @@ public class StoreManager : MonoBehaviour
         PlayerPrefs.SetInt("coins", coins);
     }
 
+    public void BuyCrop(){
+
+        int coins = PlayerPrefs.GetInt("coins");
+        if(coins >= 300){
+            coins = coins - 300;
+            int crop = PlayerPrefs.GetInt("crop");
+            PlayerPrefs.SetInt("crop", crop + 1);
+        }
+        PlayerPrefs.SetInt("coins", coins);
+    }
+
+    public void goBack(){
+        SceneManager.LoadScene("LevelExplorer");
+    }
+
     void Start()
     {
         Debug.Log("Start Coins");
@@ -45,21 +61,17 @@ public class StoreManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        TextMeshProUGUI ct = CoinText.GetComponent<TextMeshProUGUI>();
+        Text ct = CoinText.GetComponent<Text>();
         ct.text = "Coins: " + PlayerPrefs.GetInt("coins");
 
-        TextMeshProUGUI covertext = CoversText.GetComponent<TextMeshProUGUI>();
+        Text covertext = CoversText.GetComponent<Text>();
         covertext.text = "Covers: " + PlayerPrefs.GetInt("cover");
 
-        TextMeshProUGUI scitext = ScissorsText.GetComponent<TextMeshProUGUI>();
+        Text scitext = ScissorsText.GetComponent<Text>();
         scitext.text = "Scissors: " + PlayerPrefs.GetInt("scissors");
-    }
 
-    void Update(){
-        if(Input.GetMouseButtonDown(1)){
-            Debug.Log("Changing!!");
-            SceneManager.LoadScene("LevelExplorer");
-        }
+        Text croptext = CropText.GetComponent<Text>();
+        croptext.text = "Crops: " + PlayerPrefs.GetInt("Crops");
     }
 
 }

@@ -13,6 +13,7 @@ public class LevelSelector : MonoBehaviour
         Debug.Log(maxlevel);
         if(maxlevel >= 1){
             PlayerPrefs.SetInt("points", 0);
+            PlayerPrefs.SetInt("penalty", 0);
             SceneManager.LoadScene("Level1");
             Debug.Log("Loaded");
         }
@@ -22,6 +23,8 @@ public class LevelSelector : MonoBehaviour
     {
         int maxlevel = PlayerPrefs.GetInt("maxlevel");
         if(maxlevel >= 2){
+            PlayerPrefs.SetInt("points", 0);
+            PlayerPrefs.SetInt("penalty", 0);
             SceneManager.LoadScene("Level2");
         }
     }
@@ -30,6 +33,8 @@ public class LevelSelector : MonoBehaviour
     {
         int maxlevel = PlayerPrefs.GetInt("maxlevel");
         if(maxlevel >= 3){
+            PlayerPrefs.SetInt("points", 0);
+            PlayerPrefs.SetInt("penalty", 0);
             SceneManager.LoadScene("Level3");
         }
     }

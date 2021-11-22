@@ -8,6 +8,7 @@ public class randomSpawn : MonoBehaviour
 
     public OverlapManager om;
     public GameOver gameOver;
+    public GameObject parent;
 
     [SerializeField]
     private GameObject[] prefabs;
@@ -35,6 +36,7 @@ public class randomSpawn : MonoBehaviour
             }
             else { 
                 om.display();
+                parent.SetActive(false);
                 gameOver.Setup(PlayerPrefs.GetInt("points"));
             }
         }
@@ -45,11 +47,14 @@ public class randomSpawn : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         randomInt = Random.Range(0, prefabs.Length);
-        Instantiate(prefabs[randomInt], mousePos, Quaternion.identity);
+
+        GameObject new_init = Instantiate(prefabs[randomInt], mousePos, Quaternion.identity);
+        new_init.transform.SetParent(parent.GetComponent<Transform>());
+
+        // new_init.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
         int points = PlayerPrefs.GetInt("points");
         points = points + PlayerPrefs.GetInt(prefabs[randomInt].name);
-        PlayerPrefs.SetInt("points", points);
         
         Debug.Log(mousePos.x + ", " + mousePos.y);
         
@@ -59,7 +64,7 @@ public class randomSpawn : MonoBehaviour
         int overlaps = om.getValue(x, y);
         float penalty = om.getPenalty(x, y, prefabs[randomInt].name);
 
-        points = (int)(PlayerPrefs.GetInt("points") - penalty);
+        points = (int)(points - penalty);
         PlayerPrefs.SetInt("points", points);
         PlayerPrefs.SetFloat("penalty", penalty + PlayerPrefs.GetFloat("penalty"));
 
