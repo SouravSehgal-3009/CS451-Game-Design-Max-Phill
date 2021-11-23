@@ -71,7 +71,7 @@ public class StoreManager : MonoBehaviour
         scitext.text = "Scissors: " + PlayerPrefs.GetInt("scissors");
 
         Text croptext = CropText.GetComponent<Text>();
-        croptext.text = "Crops: " + PlayerPrefs.GetInt("Crops");
+        croptext.text = "Crops: " + PlayerPrefs.GetInt("crop");
     }
 
 }

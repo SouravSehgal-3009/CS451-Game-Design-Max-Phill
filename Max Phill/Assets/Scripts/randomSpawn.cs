@@ -9,6 +9,7 @@ public class randomSpawn : MonoBehaviour
     public OverlapManager om;
     public GameOver gameOver;
     public GameObject parent;
+    public GameEnd gameend;
 
     [SerializeField]
     private GameObject[] prefabs;
@@ -37,7 +38,16 @@ public class randomSpawn : MonoBehaviour
             else { 
                 om.display();
                 parent.SetActive(false);
-                gameOver.Setup(PlayerPrefs.GetInt("points"));
+                int current=PlayerPrefs.GetInt("currlevel");
+                Debug.Log("Current"+current);
+                if (current==6)
+                {
+                    gameend.Setup(PlayerPrefs.GetInt("points"));
+                }
+                else
+                {
+                    gameOver.Setup(PlayerPrefs.GetInt("points"));
+                }
             }
         }
         else if(Input.GetAxis("Horizontal") == 0) hold = false;

@@ -169,6 +169,7 @@ MonoBehaviour:
   om: {fileID: 1625597508}
   gameOver: {fileID: 1872307302}
   parent: {fileID: 433613466}
+  gameend: {fileID: 0}
   prefabs:
   - {fileID: 9014856921321399195, guid: dc5763c65ae734543a31d3fb51634e8c, type: 3}
   - {fileID: 9105930683837896793, guid: 6333c3e7bcaff2c4ab104ba793d85cf4, type: 3}
@@ -3067,7 +3068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsTxt: {fileID: 1767173119}
-  threshold: 700
+  threshold: 550
   nextButton: {fileID: 892510368}
 --- !u!224 &1872307303
 RectTransform:

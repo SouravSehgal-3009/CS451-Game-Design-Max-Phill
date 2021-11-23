@@ -3066,7 +3066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsTxt: {fileID: 1767173119}
-  threshold: 500
+  threshold: 450
   nextButton: {fileID: 892510368}
 --- !u!224 &1872307303
 RectTransform:
