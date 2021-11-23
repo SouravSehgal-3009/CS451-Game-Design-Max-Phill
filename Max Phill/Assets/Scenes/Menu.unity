@@ -1674,9 +1674,11 @@ MonoBehaviour:
     is covered.\nAt each level, you will be given some flower patches with arbitrary
     shapes and you need to insert them in the garden.\nYou can move the patch anywhere
     in the garden and rotate it as well to any arbitrary angle you want. \nYou can
-    buy two powers with the coins you have- Cover and Scissors.\nCover power will
-    cover the garden with a big rectangular patch.\nScissors power\nIn cases of overlapping
-    patches and patches going outside the garden, there will be penalties given by:-
+    buy three powers with the coins you have- Cover, Scissors and Crop.\nCover power
+    will cover the garden with a big rectangular patch and give you 60 points\nScissors
+    power will remove the selected patch from the garden.\nIn cases of overlapping
+    patches, penalty will be awarded. \nPlayer will not be allowed to insert the
+    patch outside the garden although some relaxation has been provided at boundaries.
     \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

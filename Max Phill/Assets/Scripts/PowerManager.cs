@@ -104,6 +104,6 @@ public class PowerManager : MonoBehaviour
     }
 
     public void Home(){
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("LevelExplorer");
     }
 }
