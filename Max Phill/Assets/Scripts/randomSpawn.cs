@@ -56,6 +56,13 @@ public class randomSpawn : MonoBehaviour
     void spawn(){
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        int x = (int)((mousePos.x + om.sw/2)*om.N/om.sw);
+        int y = (int)((mousePos.y + om.sh/2)*om.N/om.sh);
+
+        if(y > 13){
+            return;
+        }
+
         randomInt = Random.Range(0, prefabs.Length);
 
         GameObject new_init = Instantiate(prefabs[randomInt], mousePos, Quaternion.identity);
@@ -68,8 +75,7 @@ public class randomSpawn : MonoBehaviour
         
         Debug.Log(mousePos.x + ", " + mousePos.y);
         
-        int x = (int)((mousePos.x + om.sw/2)*om.N/om.sw);
-        int y = (int)((mousePos.y + om.sh/2)*om.N/om.sh);
+        
 
         int overlaps = om.getValue(x, y);
         float penalty = om.getPenalty(x, y, prefabs[randomInt].name);

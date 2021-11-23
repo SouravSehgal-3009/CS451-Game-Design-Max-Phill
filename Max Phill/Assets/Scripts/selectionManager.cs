@@ -59,8 +59,17 @@ public class selectionManager : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && selected != false){
             selected = false;
 
+            int limit = (int)((selection.position.y + om.sh/2)*om.N/om.sh);
+
+            if(limit > 13){
+                selection.transform.position = position;
+                selection = null;
+                return;
+            }
+
             int x = (int)((position.x + om.sw/2)*om.N/om.sw);
             int y = (int)((position.y + om.sh/2)*om.N/om.sh);
+
             om.decrement(x, y);  
 
             float penalty = om.getPenalty(x, y, Name); 
