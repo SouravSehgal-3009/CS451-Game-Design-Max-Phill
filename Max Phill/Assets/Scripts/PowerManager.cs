@@ -36,10 +36,10 @@ public class PowerManager : MonoBehaviour
 
             rf = (RectTransform)new_object.transform;
 
-            height = rf.rect.height;
-            width = rf.rect.width;
+            height = rf.rect.height/2 - 2;
+            width = rf.rect.width/2;
 
-            float spawnY = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y + height, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y - height);
+            float spawnY = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y + height, Camera.main.ScreenToWorldPoint(new Vector2(0, 3*Screen.height/5)).y - height);
             float spawnX = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x + width, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x - width);
             Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0);
 
